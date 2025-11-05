@@ -351,41 +351,38 @@ th { background-color: #004aad; color: white; }
   box-shadow:0 2px 4px rgba(0,0,0,0.05);
 }
 
-.ph-scale {
-  display: flex;
-  flex-direction: column;
-  width: 160px;
-  margin: 20px auto;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow:0 0 8px rgba(0,0,0,0.15);
-}
 
+
+
+/* individual pH band */
 .ph-box {
-  color: white;
-  text-align:center;
-  padding:16px 0;
-  font-size:18px;
-  font-weight:bold;
+  padding: 22px 0;
+  font-size: 20px;
+  text-align: center;
 }
 
+/* small label inside each band */
 .ph-box small {
-  display:block;
-  font-size:13px;
-  font-weight:normal;
-  margin-top:4px;
+  display: block;
+  font-size: 13px;
+  font-weight: normal;
+  margin-top: 9px;
 }
 
-.red    { background:#c62828; }
-.orange { background:#f57c00; }
-.yellow { background:#fdd835; color:black; }
-.green  { background:#2e7d32; }
-.blue   { background:#1565c0; }
-.violet { background:#6a1b9a; }
+/* coloured bands for pH — use combined selector so we don't overwrite global .red/.blue used elsewhere */
+.ph-box.ph-red    { background: #c62828; color: #fff; }
+.ph-box.ph-orange { background: #f57c00; color: #fff; }
+.ph-box.ph-yellow { background: #fdd835; color: #000; }
+.ph-box.ph-green  { background: #2e7d32; color: #fff; }
+.ph-box.ph-blue   { background: #1565c0; color: #fff; }
+.ph-box.ph-violet { background: #6a1b9a; color: #fff; }
 
-  width:100%
-  border-collapse:collapse
+ #phtable {
+  width:100%;
+  border-collapse:collapse;
   margin-top:15px;
+}
+
 #phtable th {
   background:#004aad;
   color:white;
@@ -646,14 +643,14 @@ th { background-color: #004aad; color: white; }
 
   <h3>4) pH Scale</h3>
 
-<div class="ph-scale">
-  <div class="ph-box red">0 – 3<br><small>Strong Acid</small></div>
-  <div class="ph-box orange">4 – 5<br><small>Weak Acid</small></div>
-  <div class="ph-box yellow">5 – 6<br><small>Weak Acid</small></div>
-  <div class="ph-box green">7<br><small>Neutral</small></div>
-  <div class="ph-box blue">8 – 11<br><small>Weak Base</small></div>
-  <div class="ph-box violet">12 – 14<br><small>Strong Base</small></div>
-</div>
+  <div class="ph-scale" style="display:flex;gap:10px;max-width:920px;margin:18px auto;justify-content:space-between;align-items:stretch;flex-wrap:wrap;">
+    <div class="ph-box ph-red" style="flex:1;min-width:110px;max-width:150px;margin:6px;">0 – 3<br><small>Strong Acid</small></div>
+    <div class="ph-box ph-orange" style="flex:1;min-width:110px;max-width:150px;margin:6px;">4 – 5<br><small>Weak Acid</small></div>
+    <div class="ph-box ph-yellow" style="flex:1;min-width:110px;max-width:150px;margin:6px;">5 – 6<br><small>Weak Acid</small></div>
+    <div class="ph-box ph-green" style="flex:1;min-width:110px;max-width:150px;margin:6px;">7<br><small>Neutral</small></div>
+    <div class="ph-box ph-blue" style="flex:1;min-width:110px;max-width:150px;margin:6px;">8 – 11<br><small>Weak Base</small></div>
+    <div class="ph-box ph-violet" style="flex:1;min-width:110px;max-width:150px;margin:6px;">12 – 14<br><small>Strong Base</small></div>
+  </div>
 </section>
 
 
