@@ -398,6 +398,39 @@ th { background-color: #004aad; color: white; }
   background:white;
 }
 
+
+/* ORGANIC DEFINITIONS (Notes-style card) */
+.notes-box{
+  max-width: 900px;
+  margin: 30px auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px 24px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  line-height: 1.8;
+}
+
+.notes-box h3{
+  text-align:center;
+  color:#003b88;
+  margin-top: 0;
+}
+
+.notes-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notes-list li{
+  background: #f7f9ff;
+  border: 1px solid #d8e2ff;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
 </style>
 </head>
 <body>
@@ -417,6 +450,7 @@ th { background-color: #004aad; color: white; }
   <a onclick="showSection('redox')">Redox Summary</a>
   <a onclick="showSection('indicators')">Indicators</a>
   <a onclick="showSection('gascolours')">Gas Colours</a>
+  <a onclick="showSection('organic')">Organic Definitions</a>
 </nav>
 
 <!-- COMPLETE PERIODIC TABLE -->
@@ -657,7 +691,31 @@ th { background-color: #004aad; color: white; }
 <!-- GAS COLOURS -->
 <section id="gascolours">
   <img src="Tree 2.jpeg" alt="Colours of Common Gases" style="display:block;max-width:100%;margin:auto;border:1px solid #ccc;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.1);"/>
+</section>
 
+
+<!-- ORGANIC DEFINITIONS -->
+<section id="organic">
+  <h2>Organic Definitions</h2>
+
+  <div class="notes-box">
+    <h3>Key Definitions</h3>
+    <ul class="notes-list">
+      <li>
+        <b>Hydrocarbons:-</b>
+        Substance that contains <b>carbon</b> and <b>hydrogen</b> only.
+      </li>
+      <li>
+        <b>Saturated:-</b>
+        All the <b>C–C</b> bonds are <b>single</b>.
+      </li>
+      <li>
+        <b>Unsaturated:-</b>
+        Contains a <b>double</b> or <b>triple</b> bond.
+      </li>
+    </ul>
+  </div>
+</section>
 
 <script>
 // navigation (keeps existing behavior; not broken)
