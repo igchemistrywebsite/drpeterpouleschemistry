@@ -4,434 +4,435 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>IGCSE Chemistry (0620) Hub</title>
+
 <style>
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  margin: 0;
-  background: #f3f7ff;
-  color: #222;
-}
-header {
-  background: #004aad;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-}
-nav {
-  background: #002e7a;
-  text-align: center;
-  padding: 0.5rem;
-}
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
-  cursor: pointer;
-}
-nav a:hover { color: #ffd700; }
-
-section { display: none; padding: 20px; }
-section.active { display: block; }
-h2 { color: #003b88; text-align:center; }
-
-/* Periodic Table styling */
-.periodic-container {
-  display: grid;
-  grid-template-columns: repeat(18, 56px);
-  grid-auto-rows: 56px;
-  grid-gap: 6px;
-  justify-content: center;
-  margin: 20px auto;
-  background: #fff;
-  padding: 18px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-  width: fit-content;
-}
-.pt-element {
-  border: 1px solid #d0d6e6;
-  border-radius: 6px;
-  text-align: center;
-  font-size: 13px;
-  padding: 6px 4px;
-  font-weight: 700;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-}
-.pt-element small { display:block; font-size:10px; color:#444; margin-top:3px; font-weight:600; }
-.metal { background:#ffd6a5; }
-.nonmetal { background:#bde0fe; }
-.noble { background:#caffbf; }
-.transition { background:#f9c74f; }
-.lan-act { background:#fcd5ce; }
-
-/* lan/act separate row containers (14 columns each) */
-.lan-container, .act-container {
-  display: grid;
-  grid-template-columns: repeat(14, 56px);
-  grid-gap: 6px;
-  justify-content: center;
-  margin: 10px auto 30px;
-  width: fit-content;
-}
-
-/* Solubility charts */
-.solubility-box {
-  max-width: 800px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  margin: 30px auto;
-  padding: 20px 30px;
-  line-height: 1.8;
-}
-.solubility-box h3 { text-align:center; color:#c00; }
-.arrow {
-  border-top: 2px dashed #222;
-  height: 2px;
-  width: 100%;
-  margin: 10px 0;
-}
-.red { color:#c00; font-weight:bold; }
-.blue { color:#004aad; font-weight:bold; }
-
-  .blue {
-  background: transparent !important;
-  color: #004aad;
-  font-weight: bold;
-}
-
-.red {
-  background: transparent !important;
-  color: #c00;
-  font-weight: bold;
-}
-
-/* Summary */
-.summary-box {
-  max-width: 900px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  margin: 30px auto;
-  padding: 20px 30px;
-}
-.summary-flex {
-  display:flex;
-  justify-content: space-around;
-  flex-wrap:wrap;
-  text-align:center;
-}
-.summary-item {
-  width: 250px;
-  background:#f7f9ff;
-  border-radius:10px;
-  padding:15px;
-  box-shadow:0 2px 5px rgba(0,0,0,0.1);
-  margin:10px;
-}
-.summary-item h4 {
-  background:#ffde59;
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:6px;
-}
-.example { color:#0055cc; font-weight:bold; }
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-  background: white;
-  margin-top: 20px;
-}
-th, td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: center;
-}
-th { background-color: #004aad; color: white; }
-
-.reactivity-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-  align-items: flex-start;
-  margin-top: 20px;
-}
-
-.reactivity-left, .reactivity-right {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  text-align: center;
-}
-
-.group {
-  border: 2px solid #ccc;
-  border-radius: 15px;
-  padding: 15px;
-  background: #fefefe;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.elements {
-  font-weight: bold;
-  color: #007bff;
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-.icon {
-  font-size: 25px;
-  margin: 5px 0;
-}
-
-.arabic {
-  font-family: "Cairo", sans-serif;
-  font-size: 18px;
-  color: #8b6a00;
-  background: #fff3cd;
-  border-radius: 10px;
-  padding: 4px 10px;
-  display: inline-block;
-}
-
-.reactivity-right {
-  min-width: 150px;
-}
-
-.belowH, .element-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  font-size: 18px;
-}
-
-.element-row span {
-  font-weight: bold;
-  color: #333;
-}
-
-/* Redox Summary Styling */
-#redox {
-  text-align: center;
-  margin-top: 20px;
-}
-
-#redox h2 {
-  background-color: #5ab1ff;
-  color: white;
-  display: inline-block;
-  padding: 8px 25px;
-  border-radius: 10px;
-  font-weight: bold;
-}
-
-.redox-container {
-  display: flex;
-  justify-content: center;
-  gap: 80px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-
-.theory {
-  width: 300px;
-  padding: 15px;
-  border: 3px solid #b48b00;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-}
-
-.old h3 {
-  color: #2e58b8;
-  font-family: 'Georgia', serif;
-  font-size: 1.6em;
-}
-
-.new h3 {
-  color: #4b7f2b;
-  font-family: 'Georgia', serif;
-  font-size: 1.6em;
-}
-
-.subtitle {
-  background-color: #dce6f9;
-  display: inline-block;
-  padding: 5px 12px;
-  border-radius: 8px;
-  margin: 10px 0;
-  font-weight: 600;
-}
-
-.subtitle.yellow {
-  background: #ffe84a;
-  color: #000;
-}
-
-.process {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 15px;
-}
-
-.half {
-  width: 45%;
-}
-
-.oxidation {
-  color: #0056b3;
-}
-
-.reduction {
-  color: #a74343;
-}
-
-.oxidation-oil {
-  color: #476c3d;
-}
-
-.reduction-rig {
-  color: #1e6dd1;
-}
-
-.half p {
-  font-size: 0.95em;
-  line-height: 1.5em;
-}
-
-.valency {
-  margin-top: 20px;
-  font-weight: bold;
-  color: #333;
-}
-
-.arrow-up {
-  color: #f15a24;
-  font-size: 1.3em;
-}
-
-.arrow-down {
-  color: #f15a24;
-  font-size: 1.3em;
-}
-
-/* INDICATORS TAB STYLE */
-#indicators h2 {
-  color:#003b88;
-  text-align:center;
-  margin-top:0;
-}
-
-#indicators h3 {
-  color:#b30000;
-  margin-top:25px;
-}
-
-#indicators ul {
-  list-style:none;
-  padding:0;
-  margin:8px 0 15px 0;
-}
-
-#indicators ul li {
-  background:#fff;
-  border:1px solid #ddd;
-  padding:10px 14px;
-  border-radius:8px;
-  margin-bottom:8px;
-  font-size:16px;
-  box-shadow:0 2px 4px rgba(0,0,0,0.05);
-}
-
-
-
-
-/* individual pH band */
-.ph-box {
-  padding: 22px 0;
-  font-size: 20px;
-  text-align: center;
-}
-
-/* small label inside each band */
-.ph-box small {
-  display: block;
-  font-size: 13px;
-  font-weight: normal;
-  margin-top: px;
-}
-
-/* coloured bands for pH — use combined selector so we don't overwrite global .red/.blue used elsewhere */
-.ph-box.ph-red    { background: #c62828; color: #fff; }
-.ph-box.ph-orange { background: #f57c00; color: #fff; }
-.ph-box.ph-yellow { background: #fdd835; color: #000; }
-.ph-box.ph-green  { background: #2e7d32; color: #fff; }
-.ph-box.ph-blue   { background: #1565c0; color: #fff; }
-.ph-box.ph-violet { background: #6a1b9a; color: #fff; }
-
- #phtable {
-  width:100%;
-  border-collapse:collapse;
-  margin-top:15px;
-}
-
-#phtable th {
-  background:#004aad;
-  color:white;
-  padding:8px;
-  border:1px solid #ccc;
-}
-
-#phtable td {
-  border:1px solid #ccc;
-  text-align:center;
-  padding:8px;
-  font-size:15px;
-  background:white;
-}
-
-
-/* ORGANIC DEFINITIONS (Notes-style card) */
-.notes-box{
-  max-width: 900px;
-  margin: 30px auto;
-  background: #fff;
-  border-radius: 12px;
-  padding: 18px 24px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  line-height: 1.8;
-}
-
-.notes-box h3{
-  text-align:center;
-  color:#003b88;
-  margin-top: 0;
-}
-
-.notes-list{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.notes-list li{
-  background: #f7f9ff;
-  border: 1px solid #d8e2ff;
-  border-radius: 10px;
-  padding: 12px 14px;
-  margin: 10px 0;
-  font-size: 16px;
-}
-
-</style>
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    background: #f3f7ff;
+    color: #222;
+  }
+  header {
+    background: #004aad;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  nav {
+    background: #002e7a;
+    text-align: center;
+    padding: 0.5rem;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  nav a:hover { color: #ffd700; }
+  
+  section { display: none; padding: 20px; }
+  section.active { display: block; }
+  h2 { color: #003b88; text-align:center; }
+  
+  /* Periodic Table styling */
+  .periodic-container {
+    display: grid;
+    grid-template-columns: repeat(18, 56px);
+    grid-auto-rows: 56px;
+    grid-gap: 6px;
+    justify-content: center;
+    margin: 20px auto;
+    background: #fff;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    width: fit-content;
+  }
+  .pt-element {
+    border: 1px solid #d0d6e6;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 13px;
+    padding: 6px 4px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .pt-element small { display:block; font-size:10px; color:#444; margin-top:3px; font-weight:600; }
+  .metal { background:#ffd6a5; }
+  .nonmetal { background:#bde0fe; }
+  .noble { background:#caffbf; }
+  .transition { background:#f9c74f; }
+  .lan-act { background:#fcd5ce; }
+  
+  /* lan/act separate row containers (14 columns each) */
+  .lan-container, .act-container {
+    display: grid;
+    grid-template-columns: repeat(14, 56px);
+    grid-gap: 6px;
+    justify-content: center;
+    margin: 10px auto 30px;
+    width: fit-content;
+  }
+  
+  /* Solubility charts */
+  .solubility-box {
+    max-width: 800px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 30px auto;
+    padding: 20px 30px;
+    line-height: 1.8;
+  }
+  .solubility-box h3 { text-align:center; color:#c00; }
+  .arrow {
+    border-top: 2px dashed #222;
+    height: 2px;
+    width: 100%;
+    margin: 10px 0;
+  }
+  .red { color:#c00; font-weight:bold; }
+  .blue { color:#004aad; font-weight:bold; }
+  
+    .blue {
+    background: transparent !important;
+    color: #004aad;
+    font-weight: bold;
+  }
+  
+  .red {
+    background: transparent !important;
+    color: #c00;
+    font-weight: bold;
+  }
+  
+  /* Summary */
+  .summary-box {
+    max-width: 900px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 30px auto;
+    padding: 20px 30px;
+  }
+  .summary-flex {
+    display:flex;
+    justify-content: space-around;
+    flex-wrap:wrap;
+    text-align:center;
+  }
+  .summary-item {
+    width: 250px;
+    background:#f7f9ff;
+    border-radius:10px;
+    padding:15px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    margin:10px;
+  }
+  .summary-item h4 {
+    background:#ffde59;
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:6px;
+  }
+  .example { color:#0055cc; font-weight:bold; }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    background: white;
+    margin-top: 20px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+  }
+  th { background-color: #004aad; color: white; }
+  
+  .reactivity-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+  
+  .reactivity-left, .reactivity-right {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+  }
+  
+  .group {
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    padding: 15px;
+    background: #fefefe;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  .elements {
+    font-weight: bold;
+    color: #007bff;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  .icon {
+    font-size: 25px;
+    margin: 5px 0;
+  }
+  
+  .arabic {
+    font-family: "Cairo", sans-serif;
+    font-size: 18px;
+    color: #8b6a00;
+    background: #fff3cd;
+    border-radius: 10px;
+    padding: 4px 10px;
+    display: inline-block;
+  }
+  
+  .reactivity-right {
+    min-width: 150px;
+  }
+  
+  .belowH, .element-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+  }
+  
+  .element-row span {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Redox Summary Styling */
+  #redox {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  #redox h2 {
+    background-color: #5ab1ff;
+    color: white;
+    display: inline-block;
+    padding: 8px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+  }
+  
+  .redox-container {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  
+  .theory {
+    width: 300px;
+    padding: 15px;
+    border: 3px solid #b48b00;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  }
+  
+  .old h3 {
+    color: #2e58b8;
+    font-family: 'Georgia', serif;
+    font-size: 1.6em;
+  }
+  
+  .new h3 {
+    color: #4b7f2b;
+    font-family: 'Georgia', serif;
+    font-size: 1.6em;
+  }
+  
+  .subtitle {
+    background-color: #dce6f9;
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-weight: 600;
+  }
+  
+  .subtitle.yellow {
+    background: #ffe84a;
+    color: #000;
+  }
+  
+  .process {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+  }
+  
+  .half {
+    width: 45%;
+  }
+  
+  .oxidation {
+    color: #0056b3;
+  }
+  
+  .reduction {
+    color: #a74343;
+  }
+  
+  .oxidation-oil {
+    color: #476c3d;
+  }
+  
+  .reduction-rig {
+    color: #1e6dd1;
+  }
+  
+  .half p {
+    font-size: 0.95em;
+    line-height: 1.5em;
+  }
+  
+  .valency {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .arrow-up {
+    color: #f15a24;
+    font-size: 1.3em;
+  }
+  
+  .arrow-down {
+    color: #f15a24;
+    font-size: 1.3em;
+  }
+  
+  /* INDICATORS TAB STYLE */
+  #indicators h2 {
+    color:#003b88;
+    text-align:center;
+    margin-top:0;
+  }
+  
+  #indicators h3 {
+    color:#b30000;
+    margin-top:25px;
+  }
+  
+  #indicators ul {
+    list-style:none;
+    padding:0;
+    margin:8px 0 15px 0;
+  }
+  
+  #indicators ul li {
+    background:#fff;
+    border:1px solid #ddd;
+    padding:10px 14px;
+    border-radius:8px;
+    margin-bottom:8px;
+    font-size:16px;
+    box-shadow:0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  
+  
+  
+  /* individual pH band */
+  .ph-box {
+    padding: 22px 0;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  /* small label inside each band */
+  .ph-box small {
+    display: block;
+    font-size: 13px;
+    font-weight: normal;
+    margin-top: px;
+  }
+  
+  /* coloured bands for pH — use combined selector so we don't overwrite global .red/.blue used elsewhere */
+  .ph-box.ph-red    { background: #c62828; color: #fff; }
+  .ph-box.ph-orange { background: #f57c00; color: #fff; }
+  .ph-box.ph-yellow { background: #fdd835; color: #000; }
+  .ph-box.ph-green  { background: #2e7d32; color: #fff; }
+  .ph-box.ph-blue   { background: #1565c0; color: #fff; }
+  .ph-box.ph-violet { background: #6a1b9a; color: #fff; }
+  
+   #phtable {
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+  }
+  
+  #phtable th {
+    background:#004aad;
+    color:white;
+    padding:8px;
+    border:1px solid #ccc;
+  }
+  
+  #phtable td {
+    border:1px solid #ccc;
+    text-align:center;
+    padding:8px;
+    font-size:15px;
+    background:white;
+  }
+  
+  
+  /* ORGANIC DEFINITIONS (Notes-style card) */
+  .notes-box{
+    max-width: 900px;
+    margin: 30px auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 24px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    line-height: 1.8;
+  }
+  
+  .notes-box h3{
+    text-align:center;
+    color:#003b88;
+    margin-top: 0;
+  }
+  
+  .notes-list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .notes-list li{
+    background: #f7f9ff;
+    border: 1px solid #d8e2ff;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  
+  </style>
 </head>
 <body>
 
@@ -451,6 +452,7 @@ th { background-color: #004aad; color: white; }
   <a onclick="showSection('indicators')">Indicators</a>
   <a onclick="showSection('gascolours')">Gas Colours</a>
   <a onclick="showSection('organic')">Organic Definitions</a>
+  <a onclick="showSection('ionid')">Identification of Ion</a>
 </nav>
 
 <!-- COMPLETE PERIODIC TABLE -->
@@ -714,6 +716,182 @@ th { background-color: #004aad; color: white; }
         Contains a <b>double</b> or <b>triple</b> bond.
       </li>
     </ul>
+  </div>
+</section>
+
+<!-- IDENTIFICATION OF ION -->
+<section id="ionid">
+  <h2>Identification of Ion</h2>
+
+  <div class="summary-box">
+    <table>
+      <tr>
+        <th>Anion</th>
+        <th>Test</th>
+        <th>Result</th>
+      </tr>
+
+      <tr>
+        <td>NO<sub>3</sub><sup>−</sup> (Nitrate)</td>
+        <td style="text-align:left;">
+          1) Add sodium hydroxide (NaOH)<br>
+          2) Add aluminium foil<br>
+          3) Heat
+        </td>
+        <td style="text-align:left;">
+          1) Pungent smell<br>
+          2) Alkaline gas (NH<sub>3</sub>)<br>
+          3) Turns damp litmus paper blue
+        </td>
+      </tr>
+
+      <tr>
+        <td>CO<sub>3</sub><sup>2−</sup> (Carbonate)</td>
+        <td style="text-align:left;">
+          Add dilute acid (HCl / HNO<sub>3</sub> / H<sub>2</sub>SO<sub>4</sub>)
+        </td>
+        <td style="text-align:left;">
+          1) Effervescence<br>
+          2) Turns limewater milky<br>
+          3) CO<sub>2</sub> gas is produced
+        </td>
+      </tr>
+
+      <tr>
+        <td>Cl<sup>−</sup> (Chloride)</td>
+        <td style="text-align:left;">
+          Add HNO<sub>3</sub>, then add AgNO<sub>3</sub> (or Pb(NO<sub>3</sub>)<sub>2</sub>)
+        </td>
+        <td style="text-align:left;">
+          <span style="color:#ffffff;background:#004aad;padding:2px 6px;border-radius:6px;font-weight:700;">White</span> precipitate (AgCl / PbCl<sub>2</sub>)
+        </td>
+      </tr>
+
+      <tr>
+        <td>Br<sup>−</sup> (Bromide)</td>
+        <td style="text-align:left;">
+          Add HNO<sub>3</sub>, then add AgNO<sub>3</sub> (or Pb(NO<sub>3</sub>)<sub>2</sub>)
+        </td>
+        <td style="text-align:left;">
+          <span style="color:#b8860b;font-weight:800;">Cream</span> precipitate (AgBr / PbBr<sub>2</sub>)
+        </td>
+      </tr>
+
+      <tr>
+        <td>I<sup>−</sup> (Iodide)</td>
+        <td style="text-align:left;">
+          Add HNO<sub>3</sub>, then add AgNO<sub>3</sub> (or Pb(NO<sub>3</sub>)<sub>2</sub>)
+        </td>
+        <td style="text-align:left;">
+          <span style="color:#ffd700;font-weight:800;">Yellow</span> precipitate (AgI / PbI<sub>2</sub>)
+        </td>
+      </tr>
+
+      <tr>
+        <td>SO<sub>4</sub><sup>2−</sup> (Sulfate)</td>
+        <td style="text-align:left;">
+          Acidify with HNO<sub>3</sub>, then add Ba(NO<sub>3</sub>)<sub>2</sub> (or BaCl<sub>2</sub>)
+        </td>
+        <td style="text-align:left;">
+          <span style="color:#ffffff;background:#004aad;padding:2px 6px;border-radius:6px;font-weight:700;">White</span> precipitate: BaSO<sub>4</sub>
+        </td>
+      </tr>
+
+      <tr>
+        <td>SO<sub>3</sub><sup>2−</sup> (Sulfite)</td>
+        <td style="text-align:left;">
+          Add dilute HCl, then add acidified KMnO<sub>4</sub>
+        </td>
+        <td style="text-align:left;">
+          SO<sub>2</sub> gas is produced<br>
+          Acidified KMnO<sub>4</sub> turns from <span style="color:purple;font-weight:800;">purple</span> to <span style="color:#777;font-weight:700;">colourless</span>
+        </td>
+      </tr>
+    </table>
+
+    <h3 style="text-align:center;color:#b30000;margin-top:28px;">Gas Tests</h3>
+    <table>
+      <tr>
+        <th>Gas</th>
+        <th>Test</th>
+        <th>Result</th>
+      </tr>
+
+      <tr>
+        <td>H<sub>2</sub> (Hydrogen)</td>
+        <td>Lighted splint</td>
+        <td>Pop sound</td>
+      </tr>
+
+      <tr>
+        <td>O<sub>2</sub> (Oxygen)</td>
+        <td>Glowing splint</td>
+        <td>Relights</td>
+      </tr>
+
+      <tr>
+        <td>CO<sub>2</sub> (Carbon dioxide)</td>
+        <td>Limewater</td>
+        <td>Turns <span style="color:#777;font-weight:700;">milky</span></td>
+      </tr>
+
+      <tr>
+        <td>NH<sub>3</sub> (Ammonia)</td>
+        <td>Damp <span style="color:#c62828;font-weight:800;">red</span> litmus paper</td>
+        <td>Turns <span style="color:#1565c0;font-weight:800;">blue</span></td>
+      
+      </tr>
+
+      <tr>
+        <td>SO<sub>2</sub> (Sulfur dioxide)</td>
+        <td>Acidified KMnO<sub>4</sub></td>
+        <td><span style="color:purple;font-weight:800;">Purple</span> to <span style="color:#777;font-weight:700;">colourless</span></td>
+      </tr>
+
+      <tr>
+        <td>Cl<sub>2</sub> (Chlorine)</td>
+        <td>Damp litmus paper</td>
+        <td>Bleaches</td>
+      </tr>
+    </table>
+
+    <h3 style="text-align:center;color:#b30000;margin-top:28px;">Flame Tests</h3>
+    <table>
+      <tr>
+        <th>Cation</th>
+        <th>Flame colour</th>
+      </tr>
+
+      <tr>
+        <td>Na<sup>+</sup></td>
+        <td><span style="color:#ffd700;font-weight:900;">Yellow</span></td>
+      </tr>
+
+      <tr>
+        <td>K<sup>+</sup></td>
+        <td><span style="color:#b39ddb;font-weight:900;">Lilac</span></td>
+      </tr>
+
+      <tr>
+        <td>Li<sup>+</sup></td>
+        <td><span style="color:#c62828;font-weight:900;">Red</span></td>
+      </tr>
+
+      <tr>
+        <td>Cu<sup>2+</sup></td>
+        <td><span style="color:#1565c0;font-weight:900;">Blue</span> / <span style="color:#2e7d32;font-weight:900;">Green</span></td>
+      </tr>
+
+      <tr>
+        <td>Ba<sup>2+</sup></td>
+        <td><span style="color:#66bb6a;font-weight:900;">Light green</span></td>
+      </tr>
+
+      <tr>
+        <td>Ca<sup>2+</sup></td>
+        <td><span style="color:#f57c00;font-weight:900;">Orange</span>-<span style="color:#c62828;font-weight:900;">red</span></td>
+      </tr>
+    </table>
   </div>
 </section>
 
